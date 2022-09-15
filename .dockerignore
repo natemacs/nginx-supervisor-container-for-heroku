@@ -1,0 +1,10 @@
+*.yml
+*.md
+.git*
+.dockerignore
+.editorconfig
+.env*
+.gitattributes
+.gitignore
+.php-cs-fixer.php
+app.json
