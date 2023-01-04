@@ -4,6 +4,23 @@
   "repository": "https://github.com/natemacs",
   "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg",
   "keywords": [ "nginx", "heroku", "container", "supervisor", "template" ],
+  "stack": "container",
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "5"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
   "addons": [
     "openredis",
     {
@@ -17,19 +34,14 @@
       }
     }
   ],
-  "env": {
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
-    },
-    "WEB_CONCURRENCY": "5"
-  },
   "environments": {
-    "test": {
-      "env": {
-        "SECRET_TOKEN": "test-secret"
+    "development": {
+      "scripts": {
+      }
+    },
+    "production": {
+      "scripts": {
       }
     }
-  },
-  "stack": "container",
+  }
 }
